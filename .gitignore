@@ -1,0 +1,53 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of go coverage
+*.out
+coverage.out
+
+# Dependency directories (if not using Go modules)
+vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Environment variables
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build folders
+bin/
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Generated files
+*.generated.go
+
+# Air live reload
+.air/
+
+# Delve debugger
+__debug_bin
