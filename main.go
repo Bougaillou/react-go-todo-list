@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -54,6 +55,17 @@ func main() {
 	collection = client.Database("golang_todo_db").Collection("todos")
 
 	app := fiber.New()
+
+	frontEndUrl := os.Getenv("FRONTEND_URL")
+
+	if frontEndUrl == ""{
+		frontEndUrl = "http://localhost:5173"
+	}
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: frontEndUrl,
+		AllowHeaders: "Origin,Content-Type",
+	}))
 
 	app.Get("/api/todos", getAllTodos)
 	app.Post("/api/todos", createTodo)
